@@ -1,0 +1,44 @@
+<header>
+  <nav class="justify-between flex w-full items-center p-2 border-b border-b-2 border-slate-100">
+    <div class="logo">
+      <img class="w-2/4 max-w-full" src="assets/images/logo.png" alt="Logo MappSphere">
+    </div>
+    <div class="user relative" (click)="toggleDropdown()">
+      <img class="w-3/4 max-w-full cursor-pointer" src="assets/images/user.svg" alt="User">
+      <div *ngIf="isDropdownOpen" id="userDropdown"
+        class="z-1000 absolute text-left right-0 mt-2 py-1 w-48 bg-white rounded-md shadow-lg">
+        <div class="dropdown-item"><i class="fa-solid fa-house"></i><a (click)="goToHome()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Page d'accueil</a></div>
+        <div class="dropdown-item"><i class="fa-regular fa-map"></i><a (click)="goToHistory()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Historique</a></div>
+        <div class="dropdown-item"><i class="fa-solid fa-arrow-right-from-bracket"></i><a (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Déconnexion</a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container mt-5 mx-auto">
+  <div class="row table">
+    <div class="col-md-12">
+      <div class="table-container">
+        <table class="table-fixed w-full text-sm text-left text-gray-500">
+          <thead class="text-xs text-white uppercase bg-[#696FFF]">
+            <tr>
+              <th scope="col" class="py-3 px-6">Ville</th>
+              <th scope="col" class="py-3 px-6">Météo</th>
+              <th scope="col" class="py-3 px-6">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let entry of historyList" class="bg-white border-b">
+              <td class="py-4 px-6">{{ entry.city }}</td>
+              <td class="py-4 px-6">{{ entry.weather }}°c</td>
+              <td class="py-4 px-6">{{ entry.date | date:'dd/MM/yyyy' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

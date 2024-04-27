@@ -1,0 +1,62 @@
+#map {
+  height: 100%;
+}
+
+main {
+  height: 80vh;
+}
+
+.leaflet-tile {
+  filter: grayscale(100%) brightness(0.5) sepia(1);
+}
+
+#mapid {
+  background-color: red;
+}
+
+.user div a {
+  text-decoration: none;
+  color: black;
+}
+
+.user:hover #userDropdown {
+  display: block;
+}
+
+.z-1000 {
+  z-index: 1000;
+}
+
+#userDropdown a {
+  transition: background-color 0.3s ease;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding: 20px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center !important;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    display: block;
+  }
+
+  .meteo {
+    margin: auto;
+    width: 100%;
+  }
+
+  #map {
+    margin: auto;
+    height: 80%;
+  }
+}

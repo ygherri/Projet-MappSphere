@@ -1,0 +1,12 @@
+.table-container {
+  margin: 0 auto;
+  max-width: 800px;
+  font-family: "Poppins";
+  padding: 20px;
+  border-radius: 20px;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center !important;
+  padding: 10px;
+}

@@ -1,0 +1,36 @@
+<header>
+  <nav class="justify-between flex w-full items-center p-2 border-b border-b-2 border-slate-100">
+    <div class="logo">
+      <img class="w-2/4 max-w-full" src="assets/images/logo.png" alt="Logo MappSphere">
+    </div>
+    <div class="user relative" (click)="toggleDropdown()">
+      <img class="w-3/4 max-w-full cursor-pointer" src="assets/images/user.svg" alt="User">
+      <div *ngIf="isDropdownOpen" id="userDropdown"
+        class="z-1000 absolute text-left right-0 mt-2 py-1 w-48 bg-white rounded-md shadow-lg">
+        <div class="dropdown-item"><i class="fa-solid fa-house"></i><a (click)="goToHome()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Page d'accueil</a></div>
+        <div class="dropdown-item"><i class="fa-regular fa-map"></i><a (click)="goToHistory()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Historique</a></div>
+        <div class="dropdown-item"><i class="fa-solid fa-arrow-right-from-bracket"></i><a (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Déconnexion</a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="flex md:block">
+  <div class="meteo w-5/12 text-center p-12"> 
+    <p class="font-medium pb-5">
+      Position Actuelle :
+      <span class="text-gray-500">{{ cityName }}</span>
+    </p>
+    <div *ngIf="temperature !== null" class="flex items-center justify-center">
+      <h1>Température: {{ temperature }}°C</h1>
+      <img *ngIf="weatherIcon" [src]="weatherIcon" alt="Weather icon">
+    </div>
+  </div>
+
+
+  <div id="map" class="map border border-slate-100 border-solid w-full h-5/6 m-8 rounded-xl">
+    <script>
+
+    </script>
+  </div>
+
+</main>

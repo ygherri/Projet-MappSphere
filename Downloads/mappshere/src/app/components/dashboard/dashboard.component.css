@@ -60,3 +60,6 @@ main {
     height: 80%;
   }
 }
+.leaflet-marker-icon {
+  filter: hue-rotate(45deg) !important;
+}

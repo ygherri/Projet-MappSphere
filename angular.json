@@ -13,11 +13,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/mappsphere",
+            "outputPath": "dist/my-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "leaflet"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -89,6 +92,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "my-app:build:production",
+              "serveTarget": "my-app:serve:production"
+            },
+            "development": {
+              "buildTarget": "my-app:build:development",
+              "serveTarget": "my-app:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

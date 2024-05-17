@@ -3,6 +3,7 @@ import { WeatherHistory } from '../../../models/history';
 import { Auth, getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { HistoryService } from '../../../services/history.service';
+import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-history',
@@ -40,8 +41,25 @@ export class HistoryComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  async getHistories(uid: any) {
-    this.historyList = await this.historyService.getHistories(uid);
+  async getHistories(uid: string): Promise<void> {
+    try {
+      const histories: DocumentData[] = await this.historyService.getHistories(uid);
+      this.historyList = histories.map((history: DocumentData) => {
+        return {
+          city: history['city'],
+          weather: history['weather'],
+          date: this.convertToDate(history['date'])
+        } as WeatherHistory;
+      });
+      console.log(this.historyList);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des historiques:', error);
+    }
+  }
+
+  convertToDate(dateStr: string): Date {
+    const [day, month, year] = dateStr.split('/').map(part => parseInt(part, 10));
+    return new Date(year, month - 1, day); 
   }
 
   goToHistory(){

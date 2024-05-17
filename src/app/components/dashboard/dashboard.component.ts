@@ -40,9 +40,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         console.log();
         const body = {
           id: this.uid,
-          city: this.cityName,
-          weather: this.temperature,
-          date: new Date().toString(),
+          city: this.cityName ?? '',
+          weather: this.temperature ?? 0,
+          date: new Date(),
         } as WeatherHistory;
         // await this.historyService.addHistory(user.uid,body);
         await this.historyService.addHistoryIfNotAddedToday(user.uid, body);
